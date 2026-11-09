@@ -3,10 +3,6 @@ import { generateKitchenCncDxf } from '../../src/utils/kitchenCncDxf.js';
 
 export const cncRouter = Router();
 
-/**
- * POST /api/v1/cnc/dxf
- * Genera el archivo vectorial DXF / código G para centros de mecanizado CNC de 3/5 ejes
- */
 cncRouter.post('/dxf', (req, res) => {
   try {
     const { cabinets } = req.body;

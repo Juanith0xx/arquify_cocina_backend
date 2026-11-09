@@ -3,10 +3,6 @@ import { generateKitchenPartsList } from '../../src/utils/kitchenManufacturing.j
 
 export const bomRouter = Router();
 
-/**
- * POST /api/v1/bom/calculate
- * Calcula el despiece industrial completo (Bill of Materials - BOM) a partir de los módulos
- */
 bomRouter.post('/calculate', (req, res) => {
   try {
     const { cabinets } = req.body;

@@ -2,10 +2,6 @@ import { Router } from 'express';
 
 export const aiRouter = Router();
 
-/**
- * POST /api/v1/ai/render
- * Genera renders fotorrealistas mediante Google Gemini API
- */
 aiRouter.post('/render', async (req, res) => {
   try {
     const { imageBase64, prompt } = req.body;
@@ -13,7 +9,6 @@ aiRouter.post('/render', async (req, res) => {
       return res.status(400).json({ error: 'Imagen base requerida para el render IA' });
     }
 
-    // Proxy endpoint para Gemini API
     res.json({
       success: true,
       message: 'Render procesado',

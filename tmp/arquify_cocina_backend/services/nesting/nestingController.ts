@@ -3,10 +3,6 @@ import { generateNestingLayout } from '../../src/utils/nesting.js';
 
 export const nestingRouter = Router();
 
-/**
- * POST /api/v1/nesting/optimize
- * Ejecuta el algoritmo de optimización de corte en planchas de tablero (Nesting)
- */
 nestingRouter.post('/optimize', (req, res) => {
   try {
     const { parts, sheetWidth = 1830, sheetHeight = 2500, kerf = 4 } = req.body;
