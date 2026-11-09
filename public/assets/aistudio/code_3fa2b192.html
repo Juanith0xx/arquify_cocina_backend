@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-slate-100" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Configuración de Acabados | Kitchen Studio Pro</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+              700: '#c2410c',
+              800: '#9a3412',
+              900: '#7c2d12',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-scrollbars">
+    /* Custom subtle scrollbar for mobile drawers */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    /* Utility to hide horizontal scrollbar in tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .touch-callout-none {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 bg-slate-900/30 flex justify-center items-center sm:p-4">
+<!-- BEGIN: MobileDrawerContainer -->
+<!-- Simulating a modern high-end iOS mobile panel drawer -->
+<div class="w-full max-w-md h-full sm:h-[920px] bg-slate-50 flex flex-col shadow-2xl relative sm:rounded-3xl overflow-hidden border border-slate-200" data-purpose="drawer-frame">
+<!-- BEGIN: TopBarNav -->
+<!-- Categorized Tab Navigation Bar with Crisp Icons -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30 shrink-0">
+<!-- Status Bar Area Padding for iOS -->
+<div class="h-2 w-full bg-transparent"></div>
+<!-- Horizontal Navigation Tabs -->
+<div class="relative flex items-center px-1">
+<!-- Left interactive scroll button with gradient backer -->
+<div class="absolute left-0 inset-y-0 flex items-center pl-1 z-20 transition-all duration-200 opacity-0 pointer-events-none" id="leftArrowWrapper">
+<div class="absolute left-0 inset-y-0 w-10 bg-gradient-to-r from-white via-white/90 to-transparent pointer-events-none"></div>
+<button aria-label="Desplazar pestañas hacia la izquierda" class="relative z-10 w-7 h-7 rounded-full bg-white/95 border border-slate-200 shadow-md flex items-center justify-center text-slate-600 hover:text-brand-600 hover:bg-white active:scale-90 transition-all cursor-pointer" id="btnScrollLeft" type="button">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+</div>
+<!-- Horizontal Navigation Tabs -->
+<nav aria-label="Secciones de configuración" class="w-full overflow-x-auto no-scrollbar py-2 px-2 scroll-smooth" id="tabsNav">
+<ul class="flex items-center gap-1.5 min-w-max px-1 pr-6">
+<!-- Item: Módulo -->
+<li class="shrink-0">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors shrink-0" type="button">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" x2="12" y1="22.08" y2="12"></line>
+</svg>
+<span class="shrink-0">Módulo</span>
+</button>
+</li>
+<!-- Item: Acabados (Active Tab) -->
+<li class="shrink-0">
+<button class="relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-brand-600 shadow-sm shadow-brand-500/30 transition-transform active:scale-95 shrink-0" type="button">
+<svg class="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<circle cx="13.5" cy="6.5" fill="currentColor" r=".5"></circle>
+<circle cx="17.5" cy="10.5" fill="currentColor" r=".5"></circle>
+<circle cx="8.5" cy="7.5" fill="currentColor" r=".5"></circle>
+<circle cx="6.5" cy="12.5" fill="currentColor" r=".5"></circle>
+<path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+</svg>
+<span class="shrink-0">Acabados</span>
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0"></span>
+</button>
+</li>
+<!-- Item: Herrajes -->
+<li class="shrink-0">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors shrink-0" type="button">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+</svg>
+<span class="shrink-0">Herrajes</span>
+</button>
+</li>
+<!-- Item: MEP -->
+<li class="shrink-0">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors shrink-0" type="button">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+</svg>
+<span class="shrink-0">MEP</span>
+</button>
+</li>
+<!-- Item: Deco -->
+<li class="shrink-0">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors shrink-0" type="button">
+<svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+<span class="shrink-0">Deco</span>
+</button>
+</li>
+</ul>
+</nav>
+<!-- Right interactive scroll button with gradient backer -->
+<div class="absolute right-0 inset-y-0 flex items-center justify-end pr-1 z-20 transition-all duration-200" id="rightArrowWrapper">
+<div class="absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-white via-white/90 to-transparent pointer-events-none"></div>
+<button aria-label="Desplazar pestañas hacia la derecha" class="relative z-10 w-7 h-7 rounded-full bg-white/95 border border-slate-200 shadow-md flex items-center justify-center text-slate-600 hover:text-brand-600 hover:bg-white active:scale-90 transition-all cursor-pointer" id="btnScrollRight" type="button">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<!-- END: TopBarNav -->
+<!-- Scrollable Content Body -->
+<main class="flex-1 overflow-y-auto px-4 py-3 space-y-4 pb-28">
+<!-- BEGIN: ScopeNoticeBanner -->
+<!-- Project Scope Card Indicator -->
+<section class="rounded-2xl border border-brand-200/80 bg-gradient-to-r from-orange-50 via-white to-orange-50/50 p-3.5 shadow-sm" data-purpose="scope-indicator">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-xl bg-brand-100 text-brand-600 mt-0.5 shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="2" x2="22" y1="12" y2="12"></line>
+<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+</svg>
+</div>
+<div class="flex-1 min-w-0">
+<span class="inline-block text-[11px] font-bold tracking-wider uppercase text-brand-700">Alcance: Proyecto Global</span>
+<p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Aplica cambios a toda la cocina y a módulos con sincronización heredada.</p>
+</div>
+</div>
+</section>
+<!-- END: ScopeNoticeBanner -->
+<!-- BEGIN: IslandBackdropOption -->
+<!-- Configuration card for island outer back panel with informative callout -->
+<section class="rounded-2xl bg-white border border-slate-200 p-4 shadow-sm space-y-3" data-purpose="island-panel-setting">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-xl bg-slate-100 text-slate-600">
+<!-- Layers Icon -->
+<svg class="w-5 h-5 text-slate-700" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+<polyline points="2 17 12 22 22 17"></polyline>
+<polyline points="2 12 12 17 22 12"></polyline>
+</svg>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900 leading-snug">Placa trasera exterior isla</h3>
+<p class="text-xs text-slate-500 leading-normal">Revestimiento adosado (no afecta fondo)</p>
+</div>
+</div>
+<!-- Modern iOS-style Switch Toggle -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all after:shadow-sm peer-checked:bg-brand-600"></div>
+</label>
+</div>
+<!-- Callout Explanation -->
+<aside class="flex gap-2.5 p-3 rounded-xl bg-amber-50/70 border border-amber-200/60 text-amber-900 text-xs leading-relaxed">
+<svg class="w-4 h-4 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+<p class="">
+            Esta placa de revestimiento aplica <strong class="font-semibold text-amber-950">exclusivamente a módulos tipo Isla</strong> para ocultar uniones y patas por detrás. No afecta a muebles adosados a muro o aéreos.
+          </p>
+</aside>
+</section>
+<!-- END: IslandBackdropOption -->
+<!-- BEGIN: RoomFinishes -->
+<!-- Room Context Finishes (Walls / Floors) -->
+<section class="space-y-3" data-purpose="room-finishes">
+<div class="flex items-center justify-between">
+<h2 class="text-xs font-bold uppercase tracking-wider text-slate-500">Acabados de Estancia</h2>
+<!-- Segmented Filter Control -->
+<div class="inline-flex p-1 bg-slate-200/80 rounded-xl text-xs font-medium">
+<button class="px-3 py-1.5 bg-brand-600 text-white rounded-lg font-semibold shadow-sm flex items-center gap-1.5 transition-all" type="button">
+<svg class="w-3.5 h-3.5" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="8"></circle>
+</svg>
+<span class="">Muros <span class="opacity-90 font-normal">(10)</span></span>
+</button>
+<button class="px-3 py-1.5 text-slate-700 hover:text-slate-900 rounded-lg transition-all flex items-center gap-1.5" type="button">
+<svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" width="18" x="3" y="3"></rect>
+</svg>
+<span class="">Pisos <span class="text-slate-500">(11)</span></span>
+</button>
+</div>
+</div>
+<!-- Color Swatches Grid -->
+<div class="grid grid-cols-5 gap-2.5 p-3 rounded-2xl bg-white border border-slate-200 shadow-sm">
+<!-- Swatch: Blanco Cálido -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#FAFAF9] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Blanco</span>
+</button>
+<!-- Swatch: Blanco Frío -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#F4F4F5] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Perla</span>
+</button>
+<!-- Swatch: Gris Claro (SELECTED) -->
+<button class="flex flex-col items-center gap-1.5 p-1.5 rounded-xl bg-orange-50/70 ring-2 ring-brand-500 ring-offset-1 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-brand-300 bg-[#E2E8F0] shadow-sm flex items-center justify-center text-brand-600">
+<svg class="w-5 h-5 drop-shadow" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</div>
+<span class="text-[11px] font-bold text-brand-700 text-center truncate max-w-full">Gris</span>
+</button>
+<!-- Swatch: Greige -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#CBD5E1] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Greige</span>
+</button>
+<!-- Swatch: Gris Grafito -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border border-slate-300 bg-[#334155] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Grafito</span>
+</button>
+<!-- Swatch: Arena -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#E7DFD5] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Arena</span>
+</button>
+<!-- Swatch: Verde Salvia -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#98A88E] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Salvia</span>
+</button>
+<!-- Swatch: Terracota -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border-2 border-slate-200 bg-[#B87A65] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Terracota</span>
+</button>
+<!-- Swatch: Azul Noche -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border border-slate-300 bg-[#1E293B] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Azul</span>
+</button>
+<!-- Swatch: Verde Bosque -->
+<button class="group flex flex-col items-center gap-1.5 p-1.5 rounded-xl hover:bg-slate-50 transition" type="button">
+<div class="w-10 h-10 rounded-full border border-slate-300 bg-[#364936] shadow-inner group-hover:scale-105 transition-transform"></div>
+<span class="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">Oliva</span>
+</button>
+</div>
+</section>
+<!-- END: RoomFinishes -->
+<!-- Divider line -->
+<hr class="border-slate-200 my-2"/>
+<!-- BEGIN: KitchenFinishesMainSection -->
+<!-- Global Cabinetry Decor and Material Chooser -->
+<section class="rounded-2xl bg-white border border-brand-200 shadow-sm p-4 space-y-4" data-purpose="kitchen-materials-section">
+<!-- Header of the module group -->
+<div class="flex items-center justify-between border-b border-slate-100 pb-3">
+<div>
+<span class="text-[11px] font-bold text-brand-600 uppercase tracking-wider block">Acabados Principales</span>
+<h2 class="text-sm font-bold text-slate-900">Decorativos de Cocina</h2>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Toda la cocina
+          </span>
+</div>
+<!-- Step 1: Zone Selection -->
+<div class="space-y-2.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold">1</span>
+              Selecciona la zona a modificar:
+            </label>
+</div>
+<!-- 2-Column Ergonomic Buttons Grid with high-contrast active state -->
+<div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+<!-- Item 1 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Todo el mueble
+            </button>
+<!-- Item 2 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Puertas
+            </button>
+<!-- Item 3 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Frentes cajón
+            </button>
+<!-- Item 4 (ACTIVE SELECTION) -->
+<button class="py-2.5 px-3 rounded-xl border-2 border-brand-600 bg-brand-600 text-white shadow-md shadow-brand-500/20 font-bold transition flex items-center justify-between" type="button">
+<span class="">Paredes / Casco</span>
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</button>
+<!-- Item 5 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Tapas laterales
+            </button>
+<!-- Item 6 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Cajas cajón
+            </button>
+<!-- Item 7 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Repisas
+            </button>
+<!-- Item 8 -->
+<button class="py-2.5 px-3 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-100 text-slate-700 transition active:scale-[0.98]" type="button">
+              Trasera / Fondo
+            </button>
+</div>
+</div>
+<!-- Thickness / Caliber Filter -->
+<div class="flex items-center justify-between p-2 rounded-xl bg-slate-100 border border-slate-200/80 text-xs">
+<span class="text-xs font-bold text-slate-600 ml-1">Filtro Calibre:</span>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 bg-brand-600 text-white font-semibold rounded-lg shadow-sm" type="button">Todos</button>
+<button class="px-2.5 py-1 bg-white text-slate-700 hover:bg-slate-50 font-medium rounded-lg border border-slate-200" type="button">15 mm</button>
+<button class="px-2.5 py-1 bg-white text-slate-700 hover:bg-slate-50 font-medium rounded-lg border border-slate-200" type="button">18 mm</button>
+</div>
+</div>
+<!-- Catalogs & Board Finishes -->
+<div class="space-y-4 pt-1">
+<!-- Category 2: MASISA -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold text-slate-800">2. Masisa (Melaminas)</h3>
+<span class="text-[11px] text-slate-400 font-medium">1 seleccionado</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Material Card with Badges -->
+<div class="relative group rounded-xl border-2 border-brand-500 bg-brand-50/20 p-2 overflow-hidden shadow-sm">
+<!-- Badges header overlay -->
+<div class="flex items-center justify-between mb-1.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-rose-500 text-white uppercase tracking-tight">
+                    🔥 27% OFF
+                  </span>
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-brand-600 text-white">
+                    18mm
+                  </span>
+</div>
+<!-- Board texture preview sample -->
+<div class="w-full h-24 rounded-lg bg-gradient-to-br from-stone-200 via-stone-300 to-stone-400 border border-slate-300 relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-white/20 backdrop-blur-[0.5px]"></div>
+<div class="p-1 rounded-full bg-brand-600 text-white shadow-md z-10">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<polyline points="20 6 9 17 4 12"></polyline>
+</svg>
+</div>
+</div>
+<!-- Card Footer Name -->
+<p class="mt-2 text-xs font-bold text-slate-900 truncate">Masisa Chile Sahara</p>
+<p class="text-[11px] text-slate-500">MDF 18mm Soft</p>
+</div>
+<!-- Placeholder for other item in grid -->
+<div class="rounded-xl border border-dashed border-slate-300 p-2 flex flex-col items-center justify-center text-center text-slate-400 hover:border-slate-400 hover:text-slate-500 cursor-pointer min-h-[140px] bg-slate-50/50">
+<svg class="w-6 h-6 mb-1 stroke-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9"></circle>
+<line x1="12" x2="12" y1="8" y2="16"></line>
+<line x1="8" x2="16" y1="12" y2="12"></line>
+</svg>
+<span class="text-xs font-medium">Ver catálogo Masisa</span>
+</div>
+</div>
+</div>
+<!-- Category 3: ARAUCO / VESTO -->
+<div class="space-y-2">
+<h3 class="text-xs font-bold text-slate-800">3. Arauco / Vesto (Melaminas)</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative rounded-xl border border-slate-200 hover:border-slate-300 bg-white p-2 shadow-sm transition">
+<div class="flex items-center justify-end mb-1.5">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-600 text-white">15mm</span>
+</div>
+<div class="w-full h-24 rounded-lg bg-white border border-slate-200 shadow-inner flex items-center justify-center">
+<span class="text-xs text-slate-300 font-semibold tracking-wide">BLANCO</span>
+</div>
+<p class="mt-2 text-xs font-bold text-slate-800 truncate">Arauco Blanco Extra</p>
+<p class="text-[11px] text-slate-500">MDP 15mm Mate</p>
+</div>
+</div>
+</div>
+<!-- Category 4: ABET LAMINATI (HPL) -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold text-slate-800">4. Abet Laminati (HPL)</h3>
+<span class="text-[11px] font-medium text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
+                Laminado de Alta Presión
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative rounded-xl border border-slate-200 bg-white p-2 shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500 text-white">1 Disp.</span>
+<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-white">0.9mm</span>
+</div>
+<div class="w-full h-24 rounded-lg bg-stone-300 border border-slate-300 shadow-inner"></div>
+<p class="mt-2 text-xs font-bold text-slate-800 truncate">Abet Laminati / P...</p>
+<p class="text-[11px] text-slate-500">HPL Premium 0.9</p>
+</div>
+</div>
+<!-- Technical balancing configuration for HPL -->
+<div class="mt-3 p-3.5 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-amber-950 uppercase tracking-tight">Trascara HPL Compensación (Global)</span>
+<span class="text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300/80 px-2 py-0.5 rounded">0.9 mm</span>
+</div>
+<p class="text-xs text-amber-900 leading-relaxed">
+                Balanceador blanco normalizado para evitar el alabeo de puertas y frentes laminados a una cara.
+              </p>
+<!-- Option selector buttons -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2.5 px-2 rounded-xl text-xs font-bold text-white bg-brand-600 shadow-sm border border-brand-600 text-center active:scale-[0.98]" type="button">
+                  Balancer Blanco 0.9mm
+                </button>
+<button class="py-2.5 px-2 rounded-xl text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 text-center active:scale-[0.98]" type="button">
+                  Mismo HPL 2 Caras
+                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: KitchenFinishesMainSection -->
+</main>
+<!-- END: Scrollable Content Body -->
+<!-- BEGIN: FixedFooterCTA -->
+<!-- Sticky Bottom Call-to-Action Bar for Exporting/Reviewing Spec Sheet -->
+<footer class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 shadow-lg z-40" data-purpose="footer-action-bar">
+<button class="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white text-sm font-bold rounded-2xl shadow-lg shadow-brand-500/30 active:scale-[0.99] transition duration-150" type="button">
+<!-- Blueprint/Sheet Icon -->
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+<span class="tracking-wide">PLANOS Y DESPIECE</span>
+</button>
+</footer>
+<!-- END: FixedFooterCTA -->
+</div>
+<!-- END: MobileDrawerContainer -->
+<!-- Tab Navigation Scroll Logic -->
+<script>
+  (function () {
+    const tabsNav = document.getElementById('tabsNav');
+    const btnLeft = document.getElementById('btnScrollLeft');
+    const btnRight = document.getElementById('btnScrollRight');
+    const leftWrapper = document.getElementById('leftArrowWrapper');
+    const rightWrapper = document.getElementById('rightArrowWrapper');
+
+    if (!tabsNav || !btnLeft || !btnRight) return;
+
+    function updateArrowVisibility() {
+      const scrollLeft = tabsNav.scrollLeft;
+      const maxScrollLeft = tabsNav.scrollWidth - tabsNav.clientWidth;
+
+      // Tolerance of 2px for subpixel calculations
+      if (scrollLeft > 4) {
+        leftWrapper.classList.remove('opacity-0', 'pointer-events-none');
+        leftWrapper.classList.add('opacity-100');
+      } else {
+        leftWrapper.classList.remove('opacity-100');
+        leftWrapper.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      if (scrollLeft < maxScrollLeft - 4) {
+        rightWrapper.classList.remove('opacity-0', 'pointer-events-none');
+        rightWrapper.classList.add('opacity-100');
+      } else {
+        rightWrapper.classList.remove('opacity-100');
+        rightWrapper.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    btnLeft.addEventListener('click', function () {
+      tabsNav.scrollBy({ left: -140, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', function () {
+      tabsNav.scrollBy({ left: 140, behavior: 'smooth' });
+    });
+
+    tabsNav.addEventListener('scroll', updateArrowVisibility, { passive: true });
+    window.addEventListener('resize', updateArrowVisibility);
+
+    // Initial check
+    updateArrowVisibility();
+  })();
+</script>
+</body></html>

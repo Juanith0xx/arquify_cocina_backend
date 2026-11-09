@@ -1,0 +1,6 @@
+{
+  "name": "MuebleStudio 3D",
+  "description": "Configurador CAD/BIM paramétrico 3D especializado en la industria del mueble: cocinas modulares integrales con trazado MEP e interferencias, clósets modulares, diseño de sillas de terciado curvo con Abet Laminati y estructura metálica, mobiliario corporativo y de oficina sobre planos PDF, muebles especiales y cabinas sanitarias HPL fenólicas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

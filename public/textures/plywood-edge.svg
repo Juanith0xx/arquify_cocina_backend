@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <pattern id="plywoodEdge" width="200" height="40" patternUnits="userSpaceOnUse">
+      <!-- Alternating Birch Veneer Layers (12mm Plywood Edge) -->
+      <rect y="0" width="200" height="6" fill="#e8d5b5" />
+      <rect y="6" width="200" height="2" fill="#8c6d46" opacity="0.85" />
+      <rect y="8" width="200" height="6" fill="#cbb08b" />
+      <rect y="14" width="200" height="2" fill="#8c6d46" opacity="0.85" />
+      <rect y="16" width="200" height="6" fill="#eddcc2" />
+      <rect y="22" width="200" height="2" fill="#8c6d46" opacity="0.85" />
+      <rect y="24" width="200" height="6" fill="#cbb08b" />
+      <rect y="30" width="200" height="2" fill="#8c6d46" opacity="0.85" />
+      <rect y="32" width="200" height="6" fill="#e8d5b5" />
+      <rect y="38" width="200" height="2" fill="#8c6d46" opacity="0.85" />
+      <!-- Subtle end-grain texture lines -->
+      <g stroke="#9a7a50" stroke-width="0.5" opacity="0.3">
+        <line x1="20" y1="0" x2="20" y2="40" />
+        <line x1="55" y1="0" x2="55" y2="40" />
+        <line x1="90" y1="0" x2="90" y2="40" />
+        <line x1="130" y1="0" x2="130" y2="40" />
+        <line x1="170" y1="0" x2="170" y2="40" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#plywoodEdge)" />
+</svg>

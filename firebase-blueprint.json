@@ -1,0 +1,22 @@
+{
+  "entities": {
+    "Texture": {
+      "title": "Texture",
+      "description": "A user-uploaded texture",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "url": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "timestamp" },
+        "ownerId": { "type": "string", "maxLength": 128 }
+      },
+      "required": ["name", "url", "createdAt", "ownerId"]
+    }
+  },
+  "firestore": {
+    "textures/{textureId}": {
+      "schema": { "$ref": "#/entities/Texture" },
+      "description": "Stores texture metadata"
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 3050" width="1300" height="3050">
+  <defs>
+    <!-- Vivid Magenta / Fuchsia Background Gradient -->
+    <linearGradient id="fiorePopBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BA0073" />
+      <stop offset="50%" stop-color="#AE006B" />
+      <stop offset="100%" stop-color="#9E0062" />
+    </linearGradient>
+
+    <!-- Master Fiore Pop Flower Type A (Classic 5-Petal Organic Pop) -->
+    <g id="flowerA" fill="#BBB3C5">
+      <!-- Petal Top -->
+      <path d="M0,-85 C-32,-85 -58,-55 -58,-25 C-58,5 -25,20 0,30 C25,20 58,5 58,-25 C58,-55 32,-85 0,-85 Z" />
+      <!-- Petal Top-Right -->
+      <path d="M78,-25 C95,5 78,50 48,65 C18,80 -5,48 0,0 C5,-48 38,-55 58,-55 C72,-55 78,-42 78,-25 Z" />
+      <!-- Petal Bottom-Right -->
+      <path d="M52,88 C32,108 -10,108 -32,82 C-52,58 -42,20 0,0 C42,20 52,62 52,88 Z" />
+      <!-- Petal Bottom-Left -->
+      <path d="M-52,88 C-32,108 10,108 32,82 C52,58 42,20 0,0 C-42,20 -52,62 -52,88 Z" />
+      <!-- Petal Top-Left -->
+      <path d="M-78,-25 C-95,5 -78,50 -48,65 C-18,80 5,48 0,0 C-5,-48 -38,-55 -58,-55 C-72,-55 -78,-42 -78,-25 Z" />
+      <!-- Center Dark Magenta Splatter / Stamen -->
+      <path d="M0,-22 C14,-28 22,-12 20,6 C18,22 -2,28 -14,20 C-24,12 -16,-10 -8,-20 Z" fill="#80004E" />
+      <circle cx="14" cy="-16" r="7" fill="#80004E" />
+      <circle cx="-16" cy="14" r="6" fill="#80004E" />
+    </g>
+
+    <!-- Master Fiore Pop Flower Type B (Organic Soft Tilted) -->
+    <g id="flowerB" fill="#B3ABBE">
+      <path d="M0,-75 C-28,-75 -48,-50 -48,-20 C-48,5 -20,15 0,25 C20,15 48,5 48,-20 C48,-50 28,-75 0,-75 Z" />
+      <path d="M68,-20 C82,5 68,42 42,56 C16,70 -5,42 0,0 C5,-42 32,-48 52,-48 C62,-48 68,-36 68,-20 Z" />
+      <path d="M46,76 C26,96 -10,96 -26,72 C-42,48 -32,15 0,0 C36,15 46,52 46,76 Z" />
+      <path d="M-46,76 C-26,96 10,96 26,72 C42,48 32,15 0,0 C-36,15 -46,52 -46,76 Z" />
+      <path d="M-68,-20 C-82,5 -68,42 -42,56 C-16,70 5,42 0,0 C-5,-42 -32,-48 -52,-48 C-62,-48 -68,-36 -68,-20 Z" />
+      <circle cx="0" cy="0" r="24" fill="#80004E" />
+      <circle cx="10" cy="-10" r="8" fill="#80004E" />
+    </g>
+  </defs>
+
+  <!-- Sheet Canvas 1300 x 3050 mm (130 x 305 cm) -->
+  <rect width="1300" height="3050" fill="url(#fiorePopBg)" />
+
+  <!-- Rich Organic Scatter Pattern across 130x305 cm sheet -->
+  <!-- Tier 1: Y = 0 to 350 -->
+  <g transform="translate(180, 150) scale(1.1) rotate(12)"><use href="#flowerA" /></g>
+  <g transform="translate(520, 220) scale(1.3) rotate(-25)"><use href="#flowerB" /></g>
+  <g transform="translate(860, 120) scale(1.0) rotate(45)"><use href="#flowerA" /></g>
+  <g transform="translate(1160, 280) scale(1.2) rotate(-15)"><use href="#flowerB" /></g>
+
+  <!-- Tier 2: Y = 350 to 700 -->
+  <g transform="translate(320, 480) scale(1.25) rotate(70)"><use href="#flowerB" /></g>
+  <g transform="translate(680, 550) scale(1.05) rotate(-40)"><use href="#flowerA" /></g>
+  <g transform="translate(1040, 460) scale(1.15) rotate(15)"><use href="#flowerB" /></g>
+  <g transform="translate(100, 620) scale(0.95) rotate(-60)"><use href="#flowerA" /></g>
+
+  <!-- Tier 3: Y = 700 to 1050 -->
+  <g transform="translate(480, 800) scale(1.2) rotate(35)"><use href="#flowerA" /></g>
+  <g transform="translate(840, 880) scale(1.3) rotate(-10)"><use href="#flowerB" /></g>
+  <g transform="translate(1200, 750) scale(1.05) rotate(80)"><use href="#flowerA" /></g>
+  <g transform="translate(220, 980) scale(1.1) rotate(-30)"><use href="#flowerB" /></g>
+
+  <!-- Tier 4: Y = 1050 to 1400 -->
+  <g transform="translate(620, 1150) scale(1.25) rotate(18)"><use href="#flowerA" /></g>
+  <g transform="translate(1000, 1220) scale(1.1) rotate(-55)"><use href="#flowerB" /></g>
+  <g transform="translate(150, 1300) scale(1.15) rotate(40)"><use href="#flowerA" /></g>
+  <g transform="translate(420, 1420) scale(0.95) rotate(-15)"><use href="#flowerB" /></g>
+
+  <!-- Tier 5: Y = 1400 to 1750 -->
+  <g transform="translate(800, 1500) scale(1.3) rotate(65)"><use href="#flowerA" /></g>
+  <g transform="translate(1180, 1400) scale(1.0) rotate(-20)"><use href="#flowerB" /></g>
+  <g transform="translate(260, 1680) scale(1.2) rotate(10)"><use href="#flowerA" /></g>
+  <g transform="translate(600, 1780) scale(1.1) rotate(-70)"><use href="#flowerB" /></g>
+
+  <!-- Tier 6: Y = 1750 to 2100 -->
+  <g transform="translate(980, 1720) scale(1.25) rotate(25)"><use href="#flowerA" /></g>
+  <g transform="translate(120, 1980) scale(1.05) rotate(-45)"><use href="#flowerB" /></g>
+  <g transform="translate(440, 2080) scale(1.3) rotate(50)"><use href="#flowerA" /></g>
+  <g transform="translate(820, 2120) scale(1.15) rotate(-10)"><use href="#flowerB" /></g>
+
+  <!-- Tier 7: Y = 2100 to 2450 -->
+  <g transform="translate(1160, 2050) scale(1.1) rotate(75)"><use href="#flowerA" /></g>
+  <g transform="translate(240, 2380) scale(1.2) rotate(-35)"><use href="#flowerB" /></g>
+  <g transform="translate(640, 2450) scale(1.25) rotate(15)"><use href="#flowerA" /></g>
+  <g transform="translate(1020, 2400) scale(1.0) rotate(-60)"><use href="#flowerB" /></g>
+
+  <!-- Tier 8: Y = 2450 to 2800 -->
+  <g transform="translate(150, 2720) scale(1.15) rotate(30)"><use href="#flowerA" /></g>
+  <g transform="translate(480, 2800) scale(1.3) rotate(-20)"><use href="#flowerB" /></g>
+  <g transform="translate(860, 2750) scale(1.1) rotate(55)"><use href="#flowerA" /></g>
+  <g transform="translate(1180, 2680) scale(1.2) rotate(-40)"><use href="#flowerB" /></g>
+
+  <!-- Tier 9: Y = 2800 to 3050 -->
+  <g transform="translate(300, 2980) scale(1.05) rotate(15)"><use href="#flowerA" /></g>
+  <g transform="translate(700, 3000) scale(1.2) rotate(-15)"><use href="#flowerB" /></g>
+  <g transform="translate(1080, 2960) scale(1.15) rotate(45)"><use href="#flowerA" /></g>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#F8FAFC" />
+  <!-- Iconic Abet Memphis / Bacterio Pattern -->
+  <g fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20,30 Q 35,15 50,30 T 80,30" />
+    <path d="M 120,40 Q 135,60 150,40 T 180,45" />
+    <path d="M 220,25 Q 240,40 260,20 T 285,35" />
+    
+    <path d="M 40,90 Q 60,110 80,95 T 110,105" />
+    <path d="M 160,85 Q 175,105 195,85 T 225,95" />
+    <path d="M 250,90 Q 270,70 290,90" />
+    
+    <path d="M 15,160 Q 35,140 55,160 T 95,155" />
+    <path d="M 125,150 Q 145,170 165,150 T 205,165" />
+    <path d="M 235,155 Q 255,135 275,155" />
+    
+    <path d="M 50,220 Q 70,240 90,225 T 130,230" />
+    <path d="M 170,215 Q 190,235 210,215 T 250,225" />
+    
+    <path d="M 20,280 Q 40,260 65,280 T 105,275" />
+    <path d="M 145,285 Q 165,265 185,285 T 225,280" />
+    <path d="M 260,275 Q 275,290 295,275" />
+  </g>
+</svg>

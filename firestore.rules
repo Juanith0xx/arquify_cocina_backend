@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Catch-all deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isOwner() {
+      return existing().ownerId == request.auth.uid;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidTexture(data) {
+      return data.keys().hasAll(['name', 'url', 'createdAt', 'ownerId']) &&
+             data.keys().size() == 4 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.url is string && data.url.size() > 0 && data.url.size() <= 1000 &&
+             data.createdAt == request.time &&
+             data.ownerId == request.auth.uid;
+    }
+
+    match /textures/{textureId} {
+      allow read: if true; // Publicly readable so everyone can see the textures
+      allow create: if isSignedIn() && isValidId(textureId) && isValidTexture(incoming());
+      allow update: if isSignedIn() && isOwner() &&
+                       incoming().diff(existing()).affectedKeys().hasOnly(['name', 'url', 'updatedAt']) &&
+                       (incoming().name == null || (incoming().name is string && incoming().name.size() <= 100)) &&
+                       (incoming().url == null || (incoming().url is string && incoming().url.size() <= 1000));
+      allow delete: if isSignedIn() && isOwner();
+    }
+  }
+}
