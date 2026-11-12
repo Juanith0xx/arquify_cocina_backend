@@ -1,4 +1,5 @@
 import express from 'express';
+import { createManufacturingRouter } from './src/routes/manufacturing.js';
 import type { Request, Response } from 'express';
 
 const app = express();
@@ -281,6 +282,15 @@ app.post('/api/v1/cnc/export-dxf', (req, res) =>
 
 app.post('/api/v1/cnc/export-dxf-zip', (req, res) =>
   forwardCnc(req, res, true)
+);
+
+app.use(
+  '/api/v1/manufacturing',
+  createManufacturingRouter({
+    bomUrl: BOM_ENGINE_URL,
+    nestingUrl: CUT_OPTIMIZER_URL,
+    bomToken: BOM_SERVICE_TOKEN
+  })
 );
 
 app.listen(PORT, '0.0.0.0', () => {
