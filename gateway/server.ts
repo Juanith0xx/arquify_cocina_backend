@@ -289,6 +289,7 @@ app.use(
   createManufacturingRouter({
     bomUrl: BOM_ENGINE_URL,
     nestingUrl: CUT_OPTIMIZER_URL,
+    cncUrl: CNC_EXPORTER_URL,
     bomToken: BOM_SERVICE_TOKEN
   })
 );

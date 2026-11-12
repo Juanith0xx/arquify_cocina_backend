@@ -77,9 +77,37 @@ async function postJson(
   return result;
 }
 
+async function postPreviewJson(
+  url: URL,
+  body: unknown,
+  stage: 'BOM' | 'CNC',
+  token?: string
+): Promise<JsonObject> {
+  try {
+    return await postJson(url, body, stage, token);
+  } catch (error) {
+    if (error instanceof ServiceError) {
+      throw error;
+    }
+
+    const timeout =
+      error instanceof Error &&
+      ['TimeoutError', 'AbortError'].includes(error.name);
+
+    throw new ServiceError(
+      timeout ? 504 : 503,
+      stage,
+      timeout
+        ? `Tiempo de espera agotado en ${stage}`
+        : `No fue posible conectar con ${stage}`
+    );
+  }
+}
+
 export function createManufacturingRouter(options: {
   bomUrl: string;
   nestingUrl: string;
+  cncUrl: string;
   bomToken?: string;
 }) {
   const router = Router();
@@ -248,6 +276,180 @@ export function createManufacturingRouter(options: {
         error: timeout
           ? 'Tiempo de espera agotado'
           : 'No fue posible completar la planificación'
+      });
+    }
+  });
+
+
+  /**
+   * BOM -> CNC Exporter.
+   * Solo previsualización: NO genera instrucciones de maquinaria.
+   */
+  router.post('/cnc-preview', async (req, res) => {
+    const {
+      cabinets,
+      config,
+      includeHardware = true,
+      settings,
+      orientations
+    } = req.body ?? {};
+
+    if (
+      !Array.isArray(cabinets) ||
+      cabinets.length === 0 ||
+      cabinets.length > 50 ||
+      !isObject(config) ||
+      !isObject(settings) ||
+      !Array.isArray(orientations) ||
+      typeof includeHardware !== 'boolean'
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: 'Solicitud de previsualización CNC inválida'
+      });
+    }
+
+    const cabinetMap = new Map<string, JsonObject>();
+
+    for (const cabinet of cabinets) {
+      if (
+        !isObject(cabinet) ||
+        typeof cabinet.id !== 'string' ||
+        !cabinet.id.trim() ||
+        typeof cabinet.hasDoors !== 'boolean' ||
+        cabinetMap.has(cabinet.id)
+      ) {
+        return res.status(422).json({
+          success: false,
+          error: 'Identidad o configuración de gabinete inválida'
+        });
+      }
+
+      cabinetMap.set(cabinet.id, cabinet);
+    }
+
+    const orientationCount = new Map<string, number>();
+
+    for (const orientation of orientations) {
+      if (
+        !isObject(orientation) ||
+        typeof orientation.cabinetId !== 'string' ||
+        !cabinetMap.has(orientation.cabinetId)
+      ) {
+        return res.status(422).json({
+          success: false,
+          error: 'Orientación con gabinete desconocido'
+        });
+      }
+
+      const id = orientation.cabinetId;
+
+      orientationCount.set(
+        id,
+        (orientationCount.get(id) ?? 0) + 1
+      );
+    }
+
+    for (const [cabinetId, cabinet] of cabinetMap) {
+      const count = orientationCount.get(cabinetId) ?? 0;
+
+      if (cabinet.hasDoors === true) {
+        if (cabinet.variant !== '1_door') {
+          return res.status(422).json({
+            success: false,
+            error: 'Previsualización CNC admite solo 1_door'
+          });
+        }
+
+        if (count !== 1) {
+          return res.status(422).json({
+            success: false,
+            error: 'Cada gabinete con puerta requiere una orientación única'
+          });
+        }
+      } else if (count !== 0) {
+        return res.status(422).json({
+          success: false,
+          error: 'Gabinete sin puertas no debe tener orientación'
+        });
+      }
+    }
+
+    try {
+      const bom = await postPreviewJson(
+        new URL('/calculate', options.bomUrl),
+        { cabinets, config, includeHardware },
+        'BOM',
+        options.bomToken
+      );
+
+      if (
+        bom.success !== true ||
+        !Array.isArray(bom.parts) ||
+        bom.parts.length === 0
+      ) {
+        throw new ServiceError(
+          502,
+          'BOM',
+          'BOM Engine devolvió un despiece inválido'
+        );
+      }
+
+      // Enviar el despiece original, incluyendo physicalUnits.
+      const cnc = await postPreviewJson(
+        new URL('/api/cnc/plan-preview', options.cncUrl),
+        {
+          parts: bom.parts,
+          cabinets,
+          settings,
+          orientations
+        },
+        'CNC'
+      );
+
+      if (
+        cnc.success !== true ||
+        cnc.readiness !== 'NOT_MACHINE_READY' ||
+        !Array.isArray(cnc.pieces) ||
+        typeof cnc.physicalPieceCount !== 'number' ||
+        cnc.physicalPieceCount !== cnc.pieces.length ||
+        !cnc.pieces.every(
+          piece =>
+            isObject(piece) &&
+            isObject(piece.manifest) &&
+            piece.manifest.readiness === 'NOT_MACHINE_READY'
+        )
+      ) {
+        throw new ServiceError(
+          502,
+          'CNC',
+          'CNC Exporter devolvió una previsualización inválida'
+        );
+      }
+
+      return res.status(200).json({
+        success: true,
+        readiness: 'NOT_MACHINE_READY',
+        summary: {
+          cabinetCount: cabinets.length,
+          bomPartTypes: bom.parts.length,
+          physicalPieceCount: cnc.physicalPieceCount
+        },
+        preview: cnc
+      });
+
+    } catch (error) {
+      if (error instanceof ServiceError) {
+        return res.status(error.status).json({
+          success: false,
+          stage: error.stage,
+          error: error.message
+        });
+      }
+
+      return res.status(500).json({
+        success: false,
+        error: 'Error interno de previsualización CNC'
       });
     }
   });
