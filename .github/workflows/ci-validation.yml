@@ -1,0 +1,36 @@
+name: CI - Arquify Validation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'ci/arquify-validaciones-20261116'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate (Gateway / TypeScript)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'gateway'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: 'gateway/package-lock.json'
+      - name: Install dependencies
+        run: npm ci
+      - name: TypeScript
+        run: npm run check
