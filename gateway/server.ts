@@ -1,6 +1,7 @@
 import express from 'express';
 import { createManufacturingRouter } from './src/routes/manufacturing.js';
 import { createAssemblySnapshotsRouter } from './src/routes/assemblySnapshots.js';
+import { createTexturesRouter } from './src/routes/textures.js';
 import type { Request, Response } from 'express';
 
 const app = express();
@@ -31,6 +32,7 @@ if (!BOM_ENGINE_URL) {
 }
 
 app.disable('x-powered-by');
+app.use('/api/v1/textures', express.json({ limit: '8mb' }), createTexturesRouter());
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/health', (_req, res) => {
