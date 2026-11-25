@@ -1,5 +1,6 @@
 import express from 'express';
 import { createManufacturingRouter } from './src/routes/manufacturing.js';
+import { createAssemblySnapshotsRouter } from './src/routes/assemblySnapshots.js';
 import type { Request, Response } from 'express';
 
 const app = express();
@@ -293,6 +294,8 @@ app.use(
     bomToken: BOM_SERVICE_TOKEN
   })
 );
+
+app.use('/api/v1/assembly-snapshots', createAssemblySnapshotsRouter());
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(
